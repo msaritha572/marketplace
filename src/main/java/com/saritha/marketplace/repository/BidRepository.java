@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BidRepository extends JpaRepository<Bid, Integer> {
+public interface BidRepository extends JpaRepository<Bid, Long> {
 
     @Query("")
     public List<Bid> getTenLowestBids(Long taskId);

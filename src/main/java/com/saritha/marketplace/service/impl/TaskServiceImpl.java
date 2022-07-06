@@ -24,8 +24,7 @@ public class TaskServiceImpl  implements TaskService {
     public List<Task> create(List<Task> tasks){
         return taskRepository.saveAll(tasks);
     }
-
-    public Date getAuctionExpirationDate(Integer taskId) {
+    public Date getAuctionExpirationDate(Long taskId) {
         Optional<Task> tasks= taskRepository.findById(taskId);
        return tasks.get().getExpirationDate();
     }
@@ -35,10 +34,9 @@ public class TaskServiceImpl  implements TaskService {
     public List<Task> getRecentTen() {
         return taskRepository.getMostRecentTenTask();
     }
-    public Integer getBidsCount(Integer id){
+    public Integer getBidsCount(Long id){
         Optional<Task> tasks= taskRepository.findById(id);
         return tasks.get().getBids() !=null ? tasks.get().getBids().size() : 0;
     }
-
 
 }

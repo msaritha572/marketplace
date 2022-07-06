@@ -2,6 +2,7 @@ package com.saritha.marketplace.service.impl;
 
 import com.saritha.marketplace.model.Bid;
 import com.saritha.marketplace.repository.BidRepository;
+import com.saritha.marketplace.service.BidService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 @Transactional
 @Service
-public class BidServiceImpl {
+public class BidServiceImpl implements BidService {
 
     @Autowired
     public BidRepository bidRepository;

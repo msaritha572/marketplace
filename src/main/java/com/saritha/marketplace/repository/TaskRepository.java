@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TaskRepository extends JpaRepository<Task, Integer> {
+public interface TaskRepository extends JpaRepository<Task, Long> {
 
     @Query("SELECT * from Task order by createddate LIMIT 10")
     public List<Task> getMostRecentTenTask();

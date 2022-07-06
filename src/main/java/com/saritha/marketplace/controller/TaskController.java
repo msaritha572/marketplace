@@ -3,13 +3,10 @@ package com.saritha.marketplace.controller;
 import com.saritha.marketplace.model.Task;
 import com.saritha.marketplace.service.impl.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RestController
 public class TaskController {
 
     @Autowired
@@ -31,11 +28,11 @@ public class TaskController {
     }
     @GetMapping("/tasks/recentten")
     public List<Task> getRecentTen(){
-        return taskService.getActiveTen();
+        return taskService.getRecentTen();
     }
 
     @GetMapping("/task/{id}/bidscount")
-    public Integer getBidsCount(@PathVariable Integer id){
+    public Integer getBidsCount(@PathVariable Long id){
         return taskService.getBidsCount(id);
     }
 
