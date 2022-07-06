@@ -1,5 +1,6 @@
 package com.saritha.marketplace.controller;
 
+import com.saritha.marketplace.model.Bid;
 import com.saritha.marketplace.model.Task;
 import com.saritha.marketplace.service.impl.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,4 +37,9 @@ public class TaskController {
         return taskService.getBidsCount(id);
     }
 
+    @GetMapping("/task/{id}/lowesttenbids")
+    public List<Bid> getLowestTenBids(@PathVariable Long id){
+        return taskService.geLowestTenBids(id);
+    }
+    
 }

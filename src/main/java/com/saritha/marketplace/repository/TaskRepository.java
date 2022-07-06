@@ -13,7 +13,5 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query("SELECT * from Task order by createddate LIMIT 10")
     public List<Task> getMostRecentTenTask();
 
-    @Query("SELECT * from Task order by createddate LIMIT 10")
     public List<Task> getActiveTen();
-
 }

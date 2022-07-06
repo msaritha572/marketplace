@@ -10,12 +10,4 @@ import java.util.List;
 @Repository
 public interface BidRepository extends JpaRepository<Bid, Long> {
 
-    @Query("")
-    public List<Bid> getTenLowestBids(Long taskId);
-
-    @Query
-    public Integer getNumberOfBids(Long taskId);
-
-
-
 }

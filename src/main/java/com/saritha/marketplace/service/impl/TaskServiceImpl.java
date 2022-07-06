@@ -1,5 +1,6 @@
 package com.saritha.marketplace.service.impl;
 
+import com.saritha.marketplace.model.Bid;
 import com.saritha.marketplace.model.Task;
 import com.saritha.marketplace.repository.TaskRepository;
 import com.saritha.marketplace.service.TaskService;
@@ -7,10 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Transactional
 @Service
@@ -39,4 +38,12 @@ public class TaskServiceImpl  implements TaskService {
         return tasks.get().getBids() !=null ? tasks.get().getBids().size() : 0;
     }
 
+    public List<Bid> geLowestTenBids(Long id) {
+        Optional<Task> task= taskRepository.findById(id);
+        List<Bid> bids=null;
+        if(task.get().getBids() != null){
+           bids= task.get().getBids().stream().sorted(Comparator.comparingDouble(Bid:: getPrice).reversed()).limit(10).collect(Collectors.toList());
+        }
+        return bids;
+    }
 }
